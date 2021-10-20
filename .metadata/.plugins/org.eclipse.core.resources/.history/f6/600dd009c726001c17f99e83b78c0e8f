@@ -1,0 +1,22 @@
+package fundamentos;
+
+import java.util.Scanner;
+
+public class Temperatura {
+	
+	public static void main(String[] args) {
+		final int SUB = 32;
+		final double DIV = 0.5555555555555556;
+		double fahrenheit;
+		int celsius;
+		
+		System.out.println("Informe a temperatura em FAHRENHEIT a ser convertida para CELSIUS: ");
+		
+		Scanner scan = new Scanner( System.in );
+		fahrenheit = scan.nextDouble();
+		
+		celsius = (fahrenheit - SUB) * DIV;
+		System.out.printf("A temperatura em CELSIUS é " + celsius);
+	}
+
+}

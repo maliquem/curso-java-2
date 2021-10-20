@@ -1,0 +1,31 @@
+package fundamentos;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class SalarioMedia {
+	
+	public static void main(String[] args) {
+		
+		Locale.setDefault(new Locale("pt", "BR"));
+		
+		Scanner sal = new Scanner(System.in);
+		
+		System.out.print("Informe o primeio salario do empregado: ");
+		String salario1 = sal.next();
+		
+		System.out.print("Informe o segundo salario do empregado: ");
+		String salario2 = sal.next();
+		
+		System.out.print("Informe o terceiro salario do empregado: ");
+		String salario3 = sal.next();
+		
+		Double media = Double.parseDouble(salario1) + Double.parseDouble(salario2) + Double.parseDouble(salario3);
+		
+		System.out.print("A media dos 3 ultimos salarios é  " + media / 3);
+		
+		sal.close();
+		
+	}
+
+}
