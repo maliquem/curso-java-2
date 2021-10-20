@@ -2,6 +2,7 @@ package oo.desafio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Cliente {
 
@@ -12,13 +13,13 @@ public class Cliente {
         this.nome = nome;
     }
 
-    void adicionarCompra(Compra compra){
+    void adicionarCompra(Compra compra) {
         this.compras.add(compra);
     }
 
-    double obterTotal(){
+    double obterTotal() {
         double total = 0.0;
-        for (Compra compra: compras) {
+        for (Compra compra : compras) {
             total += compra.obterValorTotal();
         }
         return total;
