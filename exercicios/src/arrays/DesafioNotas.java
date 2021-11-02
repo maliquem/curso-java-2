@@ -9,23 +9,23 @@ public class DesafioNotas {
         Scanner scan = new Scanner(System.in);
 
         int num;
-        System.out.print("Quantas notas você quer armazenar? ");
+        System.out.print("Quantas notas voce quer armazenar? ");
         num = scan.nextInt();
 
         double[] notas = new double[num];
 
-        for (int i = 0; i < notas.length; i++){
-            System.out.print("Digite a " + (i+1) + "ª Nota: ");
+        for (int i = 0; i < notas.length; i++) {
+            System.out.print("Digite a " + (i + 1) + " Nota: ");
             notas[i] = scan.nextDouble();
         }
 
         double media = 0.0;
 
-        for (double nota: notas) {
+        for (double nota : notas) {
             media += nota;
         }
 
-        System.out.print("A media das notas é: " + media / num);
+        System.out.print("A media das notas Ã©: " + media / num);
 
         scan.close();
 

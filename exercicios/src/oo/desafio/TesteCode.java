@@ -1,6 +1,5 @@
 package oo.desafio;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class TesteCode {
