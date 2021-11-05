@@ -3,6 +3,8 @@ package br.com.jael.cm.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.jael.cm.excecao.ExplosaoException;
+
 public class Campo {
 
     private final int linha;
@@ -33,6 +35,84 @@ public class Campo {
             return true;
         } else {
             return false;
+        }
+    }
+
+    void alternarMarcacao() {
+        if (!aberto) {
+            marcado = !marcado;
+        }
+    }
+
+    boolean abrir() {
+        if (!aberto && !marcado) {
+            aberto = true;
+
+            if (minado) {
+                throw new ExplosaoException();
+            }
+
+            if (vizinhancaSegura()) {
+                vizinhos.forEach(v -> v.abrir());
+            }
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    boolean vizinhancaSegura() {
+        return vizinhos.stream().noneMatch(v -> v.minado);
+    }
+
+    void minar() {
+        minado = true;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public boolean isAberto() {
+        return aberto;
+    }
+
+    public int getLinha() {
+        return this.linha;
+    }
+
+    public int getColuna() {
+        return this.coluna;
+    }
+
+    boolean objetivoAlcancado() {
+        boolean desvendado = !minado && aberto;
+        boolean protegido = minado && marcado;
+        return desvendado || protegido;
+    }
+
+    long minasNaVizinhanca() {
+        return vizinhos.stream().filter(v -> v.minado).count();
+    }
+
+    void reiniciar() {
+        aberto = false;
+        minado = false;
+        marcado = false;
+    }
+
+    public String toString() {
+        if (marcado) {
+            return "X";
+        } else if (aberto && minado) {
+            return "*";
+        } else if (aberto) {
+            return " ";
+        } else if (aberto && minasNaVizinhanca() > 0) {
+            return Long.toString(minasNaVizinhanca());
+        } else {
+            return "O";
         }
     }
 
